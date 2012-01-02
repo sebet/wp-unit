@@ -127,6 +127,9 @@ function wptest_get_all_test_cases() {
 function wptest_run_tests($classes, $classname='') 
 {
 	$suite = new PHPUnit_Framework_TestSuite(); 
+	
+	$suite->setBackupGlobals( false );
+	
 	foreach ($classes as $testcase)
 	{	
 		if (!$classname or strtolower($testcase) == strtolower($classname)) {
