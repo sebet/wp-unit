@@ -119,7 +119,7 @@ function wptest_get_all_test_cases() {
 	$all_classes = get_declared_classes();
 	// only classes that extend WPTestCase and have names that don't start with _ are included
 	foreach ($all_classes as $class)
-		if ($class{0} != '_' and wptest_is_descendent('PHPUnit_Framework_TestCase', $class))
+		if ($class{0} != '_' and wptest_is_descendent('PHPUnit_Framework_TestCase', $class) and $class != 'WP_UnitTestCase' )
 			$test_classes[] = $class;
 	return $test_classes;
 }
