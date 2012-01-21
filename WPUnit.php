@@ -7,8 +7,8 @@ Author: WidgiLabs team
 Author URI: http://widgilabs.com
 */
 
-define( 'WP_UNIT_DIR', WP_PLUGIN_DIR.'/'.plugin_basename(dirname(__FILE__)) );
-define('DIR_TESTCASE', WP_UNIT_DIR.'/testcase'); 
+define( 'WP_UNIT_DIR', dirname( __FILE__ ) );
+define( 'DIR_TESTCASE', WP_UNIT_DIR . '/testcase' );
 
 $currdir = getcwd();
 
