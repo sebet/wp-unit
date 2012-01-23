@@ -25,4 +25,12 @@ if( !empty( $_POST['tests'] ) ) {
 		}
 	
 	}
+	
+	if ( is_dir( get_template_directory() . '/tests/' ) ) {
+		
+		foreach ( glob( get_template_directory() . '/tests/*.php' ) as $file )
+			include_once( $file );
+			
+	}
+
 }
