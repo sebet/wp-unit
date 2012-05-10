@@ -410,7 +410,7 @@ class WP_UnitTestCase extends PHPUnit_Framework_TestCase {
 	 * @param array of filenames to check for
 	 * @return null
 	 */
-	function assertArchiveContains( $zip_file, $filenames ) {
+	function assertArchiveContains( $zip_file, $filepaths, $root = ABSPATH ) {
 
 		require_once( ABSPATH . 'wp-admin/includes/class-pclzip.php' );
 
@@ -419,6 +419,9 @@ class WP_UnitTestCase extends PHPUnit_Framework_TestCase {
 		$extracted = $archive->extract( PCLZIP_OPT_EXTRACT_AS_STRING );
 		
 		$files = array();
+		
+		foreach( $filepaths as $filepath )
+			$filenames[] = str_ireplace( $root, '', $filepath );
 
 		foreach( $extracted as $fileInfo )
 			$files[] = untrailingslashit( $fileInfo['filename'] );
